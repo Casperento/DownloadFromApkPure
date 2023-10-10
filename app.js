@@ -46,7 +46,7 @@ async function main() {
         pkgName = splited[1].split('"').join("");
         versionCode = splited[2];
 
-        /*outputPathString = `${outputPath}/${pkgName}-${versionCode}.apk`;
+        outputPathString = `${outputPath}/${pkgName}-${versionCode}.apk`;
         console.log(`\nChecking file: ${outputPathString}`);
         if (fs.existsSync(outputPathString)) {
             const sha256sum = await getSha256Hash(outputPathString);
@@ -61,11 +61,11 @@ async function main() {
                 });
             }
             continue;
-        }*/
+        }
 
         try {
             const data = await apkpureCrawler.downloadApk(pkgName, versionCode, outputPath);
-            /*const sha256sum = await getSha256Hash(data);
+            const sha256sum = await getSha256Hash(data);
             console.log(`\nFile: ${data}\nSHA-256 Hash New: ${sha256sum}\nSHA-256 Hash Old: ${sha256hash}`);
             if (sha256hash !== sha256sum) {
                 console.log('Hashes doesn\'t match.\nTrying to delete downloaded file...\n');
@@ -73,9 +73,9 @@ async function main() {
                     if (error)
                         console.error(`Error deleting the file...\n${error}\n`);
                 });
-            } else {*/
+            } else {
                 console.log(`${data} downloaded successfully!\n`);
-            //}
+            }
         } catch (error) {
             console.error(`App not found online...\n${error}\n`);
         } finally {
